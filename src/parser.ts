@@ -38,6 +38,17 @@ const SHIKI_DEFAULTS: RehypeShikiOptions = {
     transformerNotationHighlight({
       matchAlgorithm: 'v3',
     }),
+    {
+      pre(node) {
+        const meta = this.options.meta?.__raw ?? ''
+        const pairs = meta.split(/\s+(?=([^"]*"[^"]*")*[^"]*$)/)
+        node.properties = pairs.reduce((result, pair) => {
+          const [key, value] = pair.split('=')
+          result[key] = value.replace(/^"/, '').replace(/"$/, '')
+          return result
+        }, node.properties)
+      },
+    },
   ],
 }
 
