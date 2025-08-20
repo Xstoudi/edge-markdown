@@ -7,6 +7,7 @@
  * file that was distributed with this source code.
  */
 
+import { type VFile } from 'vfile'
 import remarkGfm from 'remark-gfm'
 import rehypeSlug from 'rehype-slug'
 import remarkParse from 'remark-parse'
@@ -109,9 +110,10 @@ export class MarkdownParser {
    * @param options - Parser configuration options including plugins and features
    * @returns Promise resolving to parsed result with vFile, TOC, and frontmatter
    */
-  static async parse(contents: string, options: ParserOptions) {
+  static async parse(vFile: VFile, options: ParserOptions) {
     let toc: HastNode | null = null
-    const { content, data: frontmatter } = parseFrontMatter(contents)
+    const { content, data: frontmatter } = parseFrontMatter(String(vFile.value))
+    vFile.value = content
 
     const stream = unified()
       .use(remarkParse)
@@ -162,7 +164,7 @@ export class MarkdownParser {
      * Applying rehype plugins
      */
     options.rhypePlugins.forEach((plugin) => stream.use(plugin))
-    const vFile = await stream.use(this.#passThroughCompiler).process(content)
+    await stream.use(this.#passThroughCompiler).process(vFile)
 
     return {
       vFile,

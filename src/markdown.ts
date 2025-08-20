@@ -13,6 +13,7 @@ import { readFile } from 'node:fs/promises'
 import { MarkdownParser } from './parser.ts'
 import { isVoidElement, stringifyAttributes, createRenderingContext } from './utils.ts'
 import { type ParserOptions, type RendererOptions, type MarkdownOptions } from './types.ts'
+import { VFile } from 'vfile'
 
 /**
  * The Markdown class exposes the API for parsing and rendering
@@ -80,14 +81,19 @@ export class Markdown {
    * @returns Promise resolving to parsed result with AST, frontmatter, and TOC
    */
   async parse(options: MarkdownOptions) {
-    let contents: string
+    let vFile: VFile
     if ('file' in options) {
-      contents = await readFile(options.file, 'utf-8')
+      vFile = new VFile({
+        path: options.file,
+        value: await readFile(options.file, 'utf-8'),
+      })
     } else {
-      contents = options.content
+      vFile = new VFile({
+        value: options.content,
+      })
     }
 
-    return MarkdownParser.parse(contents, { ...this.#options, ...options })
+    return MarkdownParser.parse(vFile, { ...this.#options, ...options })
   }
 
   /**
