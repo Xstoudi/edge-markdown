@@ -44,7 +44,10 @@ const SHIKI_DEFAULTS: RehypeShikiOptions = {
         const pairs = meta.split(/\s+(?=([^"]*"[^"]*")*[^"]*$)/)
         node.properties = pairs.reduce((result, pair) => {
           const [key, value] = pair.split('=')
-          result[key] = value.replace(/^"/, '').replace(/"$/, '')
+          if (!key) {
+            return result
+          }
+          result[key] = value?.replace(/^"/, '').replace(/"$/, '') ?? true
           return result
         }, node.properties)
       },
