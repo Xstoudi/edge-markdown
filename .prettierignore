@@ -3,3 +3,4 @@ docs
 coverage
 *.html
 __snapshots__
+*.edge
