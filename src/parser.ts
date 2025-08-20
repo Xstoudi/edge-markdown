@@ -21,7 +21,11 @@ import remarkMDC, { parseFrontMatter } from 'remark-mdc'
 import rehypeAutolinkHeadings from 'rehype-autolink-headings'
 import remarkSqueezeParagraphs from 'remark-squeeze-paragraphs'
 import rehypeShiki, { type RehypeShikiOptions } from '@shikijs/rehype'
-import { transformerNotationDiff, transformerNotationHighlight } from '@shikijs/transformers'
+import {
+  transformerNotationDiff,
+  transformerNotationHighlight,
+  transformerNotationWordHighlight,
+} from '@shikijs/transformers'
 
 import { type ParserOptions } from './types.ts'
 
@@ -36,6 +40,9 @@ const SHIKI_DEFAULTS: RehypeShikiOptions = {
       matchAlgorithm: 'v3',
     }),
     transformerNotationHighlight({
+      matchAlgorithm: 'v3',
+    }),
+    transformerNotationWordHighlight({
       matchAlgorithm: 'v3',
     }),
     {
