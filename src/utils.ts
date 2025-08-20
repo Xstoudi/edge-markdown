@@ -203,7 +203,7 @@ export function createRenderingContext(
       /**
        * Render default component
        */
-      return ['markdown_element', { node }]
+      return ['markdown_element', { node, ...frontmatter, ...node.properties }]
     },
   }
 }

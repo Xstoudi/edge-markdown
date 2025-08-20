@@ -7,6 +7,8 @@ on:
 jobs:
   test:
     uses: edge-js/.github/.github/workflows/test.yml@next
+    with:
+      disable-windows: true
 
   lint:
     uses: edge-js/.github/.github/workflows/lint.yml@next

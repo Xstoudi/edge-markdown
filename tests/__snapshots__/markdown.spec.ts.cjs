@@ -88,7 +88,7 @@ exports[`Markdown > parse markdown components with slots 1`] = `"<section>
   <h1 class=\\"text-4xl\\"><p>My Page Title</p>  </h1><p>This will be rendered inside the <code>description</code> slot.</p></section>"`
 
 exports[`Markdown > parse yaml frontmatter 1`] = `"<p>
-undefined</p>
+Hello world</p>
 <select>    <option value=\\"AdonisJS\\">
       AdonisJS
     </option>    <option value=\\"Lucid\\">
