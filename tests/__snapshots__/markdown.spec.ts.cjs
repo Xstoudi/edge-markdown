@@ -61,12 +61,9 @@ exports[`Markdown > parse markdown from raw contents 1`] = `"<h1 id=\\"gfm\\"><a
 </section>"`
 
 exports[`Markdown > parse markdown with MDC syntax 1`] = `"<h1 id=\\"mdc-document\\"><a aria-hidden=true tabindex=-1 href=\\"#mdc-document\\"><span class=\\"icon icon-link\\"></span></a>MDC document</h1>
-<p>A simple <span class=\\"inline-component\\"></span>
-</p>
-<p>How to say <span class=\\"hello\\">Hello</span>
--world in Markdown</p>
-<div class=\\"card\\"><p>The content of the card</p>  </div>
-
+<p>A simple <span class=\\"inline-component\\"></span></p>
+<p>How to say <span class=\\"hello\\">Hello</span>-world in Markdown</p>
+<div class=\\"card\\"><p>The content of the card</p></div>
 <p>Hello <span class=\\"bg-blue-500\\">World</span>!</p>
 <select>
     ~
@@ -83,7 +80,6 @@ exports[`Markdown > parse markdown with MDC syntax 1`] = `"<h1 id=\\"mdc-documen
     </option>
   ~
 </select>
-
 <h2 id=\\"icon-card\\"><a aria-hidden=true tabindex=-1 href=\\"#icon-card\\"><span class=\\"icon icon-link\\"></span></a>::icon-card</h2>
 <p>icon: IconNuxt
 description: Harness the full power of Nuxt and the Nuxt ecosystem.
@@ -92,7 +88,7 @@ title: Nuxt Architecture.</p>
 <p>::</p>"`
 
 exports[`Markdown > parse markdown components with slots 1`] = `"<section>
-  <h1 class=\\"text-4xl\\"><p>My Page Title</p>    </h1><p>This will be rendered inside the <code>description</code> slot.</p>    </section>"`
+  <h1 class=\\"text-4xl\\"><p>My Page Title</p>  </h1><p>This will be rendered inside the <code>description</code> slot.</p></section>"`
 
 exports[`Markdown > parse yaml frontmatter 1`] = `"<p>
 undefined</p>
