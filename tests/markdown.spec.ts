@@ -23,7 +23,7 @@ test.group('Markdown', () => {
     const renderer = edge.share({})
     const result = await renderer
       .getState()
-      .$markdown.render({ file: join(import.meta.dirname, 'fixtures/gfm.md') })
+      .$markdown.render({ file: join(import.meta.dirname, 'fixtures/gfm.mdc') })
 
     assert.snapshot(result.content).match()
   })
@@ -35,7 +35,7 @@ test.group('Markdown', () => {
 
     const renderer = edge.share({})
     const result = await renderer.getState().$markdown.render({
-      content: await readFile(join(import.meta.dirname, 'fixtures/gfm.md'), 'utf-8'),
+      content: await readFile(join(import.meta.dirname, 'fixtures/gfm.mdc'), 'utf-8'),
     })
 
     assert.snapshot(result.content).match()
@@ -49,7 +49,7 @@ test.group('Markdown', () => {
     const renderer = edge.share({})
     const result = await renderer
       .getState()
-      .$markdown.render({ file: join(import.meta.dirname, 'fixtures/mdc.md') })
+      .$markdown.render({ file: join(import.meta.dirname, 'fixtures/mdc.mdc') })
     assert.snapshot(result.content).match()
   })
 
@@ -61,7 +61,7 @@ test.group('Markdown', () => {
     const renderer = edge.share({})
     const result = await renderer
       .getState()
-      .$markdown.render({ file: join(import.meta.dirname, 'fixtures/mdc_component_slots.md') })
+      .$markdown.render({ file: join(import.meta.dirname, 'fixtures/mdc_component_slots.mdc') })
     assert.snapshot(result.content).match()
   })
 
@@ -73,7 +73,7 @@ test.group('Markdown', () => {
     const renderer = edge.share({})
     const result = await renderer
       .getState()
-      .$markdown.render({ file: join(import.meta.dirname, 'fixtures/front_matter.md') })
+      .$markdown.render({ file: join(import.meta.dirname, 'fixtures/front_matter.mdc') })
 
     assert.snapshot(result.content).match()
   })
@@ -86,7 +86,7 @@ test.group('Markdown', () => {
     const renderer = edge.share({})
     const result = await renderer
       .getState()
-      .$markdown.render({ file: join(import.meta.dirname, 'fixtures/codeblocks.md') })
+      .$markdown.render({ file: join(import.meta.dirname, 'fixtures/codeblocks.mdc') })
     assert.snapshot(result.content).match()
   })
 
@@ -104,7 +104,7 @@ test.group('Markdown', () => {
     const renderer = edge.share({})
     const result = await renderer
       .getState()
-      .$markdown.render({ file: join(import.meta.dirname, 'fixtures/codeblocks.md') })
+      .$markdown.render({ file: join(import.meta.dirname, 'fixtures/codeblocks.mdc') })
     assert.include(result.content, 'andromeeda')
   })
 
@@ -118,7 +118,7 @@ test.group('Markdown', () => {
     const renderer = edge.share({})
     const result = await renderer
       .getState()
-      .$markdown.render({ file: join(import.meta.dirname, 'fixtures/codeblocks.md') })
+      .$markdown.render({ file: join(import.meta.dirname, 'fixtures/codeblocks.mdc') })
 
     assert.include(result.content, '<pre><code class="language-ts">')
   })
@@ -247,7 +247,7 @@ Here is a paragraph with a [link](./foo)\`
     const renderer = edge.share({})
     const result = await renderer
       .getState()
-      .$markdown.render({ file: join(import.meta.dirname, 'fixtures/gfm.md') })
+      .$markdown.render({ file: join(import.meta.dirname, 'fixtures/gfm.mdc') })
 
     assert.snapshot(result.toc).match()
   })

@@ -72,12 +72,17 @@ exports[`Markdown > parse markdown with MDC syntax 1`] = `"<h1 id=\\"mdc-documen
     </option>    <option value=\\"React\\">
       React
     </option></select>
-<h2 id=\\"icon-card\\"><a aria-hidden=true tabindex=-1 href=\\"#icon-card\\"><span class=\\"icon icon-link\\"></span></a>::icon-card</h2>
-<p>icon: IconNuxt
-description: Harness the full power of Nuxt and the Nuxt ecosystem.
-title: Nuxt Architecture.</p>
-<hr/>
-<p>::</p>"`
+<div class=\\"card\\">
+  <div>
+    <span class=\\"iconify-IconNuxt\\"></span>
+    <h1>
+      Nuxt Architecture.
+    </h1>
+  </div>
+  <p>
+    Harness the full power of Nuxt and the Nuxt ecosystem.
+  </p>
+</div>"`
 
 exports[`Markdown > parse markdown components with slots 1`] = `"<section>
   <h1 class=\\"text-4xl\\"><p>My Page Title</p>  </h1><p>This will be rendered inside the <code>description</code> slot.</p></section>"`
