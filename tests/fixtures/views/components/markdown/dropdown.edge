@@ -1,0 +1,9 @@
+<select>
+  @each(option in items)
+    ~
+    <option value="{{ option }}">
+      {{ option }}
+    </option>
+  @end
+  ~
+</select>

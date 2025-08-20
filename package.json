@@ -1,0 +1,143 @@
+{
+  "name": "edge-markdown",
+  "description": "Render markdown using the MDC syntax and integrate it with Edge components",
+  "version": "1.0.0",
+  "engines": {
+    "node": ">=24.0.0"
+  },
+  "type": "module",
+  "files": [
+    "build",
+    "!build/bin",
+    "!build/tests"
+  ],
+  "main": "build/index.js",
+  "exports": {
+    ".": "./build/index.js",
+    "./types": "./build/src/types.js"
+  },
+  "scripts": {
+    "pretest": "npm run lint",
+    "test": "c8 npm run quick:test",
+    "lint": "eslint .",
+    "format": "prettier --write .",
+    "typecheck": "tsc --noEmit",
+    "precompile": "npm run lint",
+    "compile": "tsup-node && tsc --emitDeclarationOnly --declaration",
+    "build": "npm run compile",
+    "version": "npm run build",
+    "prepublishOnly": "npm run build",
+    "release": "release-it",
+    "quick:test": "node --import=@poppinss/ts-exec --enable-source-maps bin/test.ts"
+  },
+  "devDependencies": {
+    "@adonisjs/eslint-config": "^3.0.0-next.1",
+    "@adonisjs/prettier-config": "^1.4.5",
+    "@adonisjs/tsconfig": "^2.0.0-next.0",
+    "@japa/assert": "^4.0.1",
+    "@japa/expect-type": "^2.0.3",
+    "@japa/file-system": "^2.3.2",
+    "@japa/runner": "^4.2.0",
+    "@japa/snapshot": "^2.0.9",
+    "@poppinss/ts-exec": "^1.1.5",
+    "@release-it/conventional-changelog": "^10.0.1",
+    "@types/node": "^22.15.18",
+    "c8": "^10.1.3",
+    "edge.js": "^6.3.0",
+    "eslint": "^9.27.0",
+    "prettier": "^3.5.3",
+    "release-it": "^19.0.2",
+    "ts-dedent": "^2.2.0",
+    "tsup": "^8.5.0",
+    "typescript": "^5.8.3"
+  },
+  "dependencies": {
+    "@poppinss/string": "^1.7.0",
+    "@shikijs/rehype": "^3.9.2",
+    "@shikijs/transformers": "^3.11.0",
+    "escape-goat": "^4.0.0",
+    "hast": "^0.0.2",
+    "html-tags": "^5.1.0",
+    "mdast": "^2.3.2",
+    "mdast-util-to-hast": "^13.2.0",
+    "mdast-util-toc": "^7.1.0",
+    "property-information": "^7.1.0",
+    "rehype-autolink-headings": "^7.1.0",
+    "rehype-slug": "^6.0.0",
+    "remark-gfm": "^4.0.1",
+    "remark-mdc": "^3.6.0",
+    "remark-parse": "^11.0.0",
+    "remark-rehype": "^11.1.2",
+    "remark-squeeze-paragraphs": "^6.0.0",
+    "unified": "^11.0.5",
+    "unist-util-visit": "^5.0.0",
+    "vfile": "^6.0.3"
+  },
+  "homepage": "https://github.com/edge-js/edge-markdown#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/edge-js/edge-markdown.git"
+  },
+  "bugs": {
+    "url": "https://github.com/edge-js/edge-markdown/issues"
+  },
+  "keywords": [
+    "edge",
+    "edge-markdown",
+    "mdc",
+    "edge-mdc",
+    "remark"
+  ],
+  "author": "Harminder Virk <virk@adonisjs.com>",
+  "license": "MIT",
+  "publishConfig": {
+    "access": "public",
+    "provenance": true
+  },
+  "tsup": {
+    "entry": [
+      "index.ts",
+      "src/types.ts"
+    ],
+    "outDir": "./build",
+    "clean": true,
+    "format": "esm",
+    "dts": false,
+    "sourcemap": false,
+    "target": "esnext"
+  },
+  "release-it": {
+    "git": {
+      "requireCleanWorkingDir": true,
+      "requireUpstream": true,
+      "commitMessage": "chore(release): ${version}",
+      "tagAnnotation": "v${version}",
+      "push": true,
+      "tagName": "v${version}"
+    },
+    "github": {
+      "release": true
+    },
+    "npm": {
+      "publish": true,
+      "skipChecks": true
+    },
+    "plugins": {
+      "@release-it/conventional-changelog": {
+        "preset": {
+          "name": "angular"
+        }
+      }
+    }
+  },
+  "c8": {
+    "reporter": [
+      "text",
+      "html"
+    ],
+    "exclude": [
+      "tests/**"
+    ]
+  },
+  "prettier": "@adonisjs/prettier-config"
+}
