@@ -65,21 +65,13 @@ exports[`Markdown > parse markdown with MDC syntax 1`] = `"<h1 id=\\"mdc-documen
 <p>How to say <span class=\\"hello\\">Hello</span>-world in Markdown</p>
 <div class=\\"card\\"><p>The content of the card</p></div>
 <p>Hello <span class=\\"bg-blue-500\\">World</span>!</p>
-<select>
-    ~
-    <option value=\\"Nuxt\\">
+<select>    <option value=\\"Nuxt\\">
       Nuxt
-    </option>
-    ~
-    <option value=\\"Vue\\">
+    </option>    <option value=\\"Vue\\">
       Vue
-    </option>
-    ~
-    <option value=\\"React\\">
+    </option>    <option value=\\"React\\">
       React
-    </option>
-  ~
-</select>
+    </option></select>
 <h2 id=\\"icon-card\\"><a aria-hidden=true tabindex=-1 href=\\"#icon-card\\"><span class=\\"icon icon-link\\"></span></a>::icon-card</h2>
 <p>icon: IconNuxt
 description: Harness the full power of Nuxt and the Nuxt ecosystem.
@@ -92,21 +84,13 @@ exports[`Markdown > parse markdown components with slots 1`] = `"<section>
 
 exports[`Markdown > parse yaml frontmatter 1`] = `"<p>
 undefined</p>
-<select>
-    ~
-    <option value=\\"AdonisJS\\">
+<select>    <option value=\\"AdonisJS\\">
       AdonisJS
-    </option>
-    ~
-    <option value=\\"Lucid\\">
+    </option>    <option value=\\"Lucid\\">
       Lucid
-    </option>
-    ~
-    <option value=\\"VineJS\\">
+    </option>    <option value=\\"VineJS\\">
       VineJS
-    </option>
-  ~
-</select>"`
+    </option></select>"`
 
 exports[`Markdown > parse codeblocks for line highlights, title, and diff markers 1`] = `"<h2 id=\\"codeblocks\\"><a aria-hidden=true tabindex=-1 href=\\"#codeblocks\\"><span class=\\"icon icon-link\\"></span></a>Codeblocks</h2>
 <pre class=\\"shiki material-theme-palenight has-diff has-highlighted\\" style=\\"background-color:#292D3E;color:#babed8\\" tabindex=0><code><span class=\\"line\\"><span style=\\"color:#89DDFF;font-style:italic\\">import</span><span style=\\"color:#BABED8\\"> router </span><span style=\\"color:#89DDFF;font-style:italic\\">from</span><span style=\\"color:#89DDFF\\"> &#x27;</span><span style=\\"color:#C3E88D\\">@adonisjs/core/services/router</span><span style=\\"color:#89DDFF\\">&#x27;</span></span>
