@@ -24,6 +24,7 @@ import remarkSqueezeParagraphs from 'remark-squeeze-paragraphs'
 import rehypeShiki, { type RehypeShikiOptions } from '@shikijs/rehype'
 import {
   transformerNotationDiff,
+  transformerNotationFocus,
   transformerNotationHighlight,
   transformerNotationWordHighlight,
 } from '@shikijs/transformers'
@@ -44,6 +45,9 @@ const SHIKI_DEFAULTS: RehypeShikiOptions = {
       matchAlgorithm: 'v3',
     }),
     transformerNotationWordHighlight({
+      matchAlgorithm: 'v3',
+    }),
+    transformerNotationFocus({
       matchAlgorithm: 'v3',
     }),
     {
