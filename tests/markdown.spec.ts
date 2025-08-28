@@ -263,4 +263,17 @@ Here is a paragraph with a [link](./foo)\`
     assert.equal(result.toc, '')
     assert.equal(result.content, '<p>Hello world</p>')
   })
+
+  test('parse markdown with HTML', async ({ assert }) => {
+    const edge = new Edge()
+    edge.mount(join(import.meta.dirname, 'fixtures/views'))
+    edge.use(edgeMarkdown, {})
+
+    const renderer = edge.share({})
+    const result = await renderer
+      .getState()
+      .$markdown.render({ file: join(import.meta.dirname, 'fixtures/raw_html.mdc') })
+
+    assert.snapshot(result.content).match()
+  })
 })

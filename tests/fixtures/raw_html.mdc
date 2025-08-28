@@ -1,0 +1,35 @@
+<table>
+  <thead>
+      <tr>
+          <th width="40px">Rank</th>
+          <th width="220px">Filename</th>
+          <th>Notes</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>1st</td>
+          <td><code>.env.[NODE_ENV].local</code></td>
+          <td>
+          Loaded for the current <code>NODE_ENV</code>. For example, if the <code>NODE_ENV</code> is set to <code>development</code>, then the <code>.env.development.local</code> file will be loaded.
+          </td>
+      </tr>
+      <tr>
+          <td>2nd</td>
+          <td><code>.env.local</code></td>
+          <td>Loaded in all the environments except the <code>test</code> and <code>testing</code> environments</td>
+      </tr>
+      <tr>
+          <td>3rd</td>
+          <td><code>.env.[NODE_ENV]</code></td>
+          <td>
+          Loaded for the current <code>NODE_ENV</code>. For example, if the <code>NODE_ENV</code> is set to <code>development</code>, then the <code>.env.development</code> file will be loaded.
+          </td>
+      </tr>
+      <tr>
+          <td>4th</td>
+          <td><code>.env</code></td>
+          <td>Loaded in all the environments. You should add this file to <code>.gitignore</code> when storing secrets inside it.</td>
+      </tr>
+  </tbody>
+</table>

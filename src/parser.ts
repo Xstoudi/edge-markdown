@@ -9,6 +9,7 @@
 
 import { type VFile } from 'vfile'
 import remarkGfm from 'remark-gfm'
+import rehypeRaw from 'rehype-raw'
 import rehypeSlug from 'rehype-slug'
 import remarkParse from 'remark-parse'
 import remarkRehype from 'remark-rehype'
@@ -160,6 +161,7 @@ export class MarkdownParser {
      */
     stream
       .use(remarkRehype, { allowDangerousHtml: options.allowHTML })
+      .use(rehypeRaw)
       .use(rehypeSlug)
       .use(rehypeAutolinkHeadings)
 
