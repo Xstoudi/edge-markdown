@@ -2,26 +2,26 @@ exports[`Markdown > parse markdown with GFM syntax 1`] = `"<h1 id=\\"gfm\\"><a a
 <h2 id=\\"autolink-literals\\"><a aria-hidden=true tabindex=-1 href=\\"#autolink-literals\\"><span class=\\"icon icon-link\\"></span></a>Autolink literals</h2>
 <p><a href=\\"http://www.example.com\\">www.example.com</a>, <a href=\\"https://example.com\\">https://example.com</a>, and <a href=\\"mailto:contact@example.com\\">contact@example.com</a>.</p>
 <h2 id=\\"footnote\\"><a aria-hidden=true tabindex=-1 href=\\"#footnote\\"><span class=\\"icon icon-link\\"></span></a>Footnote</h2>
-<p>A note<sup><a href=\\"#user-content-fn-1\\" id=\\"user-content-fnref-1\\" data-footnote-ref=\\"undefined\\" aria-describedby=\\"footnote-label\\">1</a></sup></p>
+<p>A note<sup><a href=\\"#user-content-fn-1\\" id=\\"user-content-fnref-1\\" data-footnote-ref=\\"\\" aria-describedby=\\"footnote-label\\">1</a></sup></p>
 <h2 id=\\"strikethrough\\"><a aria-hidden=true tabindex=-1 href=\\"#strikethrough\\"><span class=\\"icon icon-link\\"></span></a>Strikethrough</h2>
 <p><del>one</del> or <del>two</del> tildes.</p>
 <h2 id=\\"table\\"><a aria-hidden=true tabindex=-1 href=\\"#table\\"><span class=\\"icon icon-link\\"></span></a>Table</h2>
-<table>
-<thead>
-<tr>
-<th>a</th>
-<th align=\\"left\\">b</th>
-<th align=\\"right\\">c</th>
-<th align=\\"center\\">d</th>
-</tr>
-</thead>
-</table>
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>a</th><th align=\\"left\\">b</th><th align=\\"right\\">c</th><th align=\\"center\\">d</th></tr></thead></table>
 <h2 id=\\"tasklist\\"><a aria-hidden=true tabindex=-1 href=\\"#tasklist\\"><span class=\\"icon icon-link\\"></span></a>Tasklist</h2>
 <ul class=\\"contains-task-list\\">
-<li class=\\"task-list-item\\"><input type=\\"checkbox\\" checked=\\"undefined\\" disabled=\\"undefined\\"/> to do</li>
+<li class=\\"task-list-item\\"><input type=\\"checkbox\\" disabled=\\"undefined\\"/> to do</li>
 <li class=\\"task-list-item\\"><input type=\\"checkbox\\" checked=\\"undefined\\" disabled=\\"undefined\\"/> done</li>
 </ul>
-<section data-footnotes=\\"undefined\\" class=\\"footnotes\\"><h2 class=\\"sr-only\\" id=\\"footnote-label\\"><a aria-hidden=true tabindex=-1 href=\\"#footnote-label\\"><span class=\\"icon icon-link\\"></span></a>Footnotes</h2>
+<section data-footnotes=\\"\\" class=\\"footnotes\\"><h2 class=\\"sr-only\\" id=\\"footnote-label\\"><a aria-hidden=true tabindex=-1 href=\\"#footnote-label\\"><span class=\\"icon icon-link\\"></span></a>Footnotes</h2>
 <ol>
 <li id=\\"user-content-fn-1\\">
 <p>Big note. <a href=\\"#user-content-fnref-1\\" data-footnote-backref=\\"\\" aria-label=\\"Back to reference 1\\" class=\\"data-footnote-backref\\">↩</a></p>
@@ -33,26 +33,26 @@ exports[`Markdown > parse markdown from raw contents 1`] = `"<h1 id=\\"gfm\\"><a
 <h2 id=\\"autolink-literals\\"><a aria-hidden=true tabindex=-1 href=\\"#autolink-literals\\"><span class=\\"icon icon-link\\"></span></a>Autolink literals</h2>
 <p><a href=\\"http://www.example.com\\">www.example.com</a>, <a href=\\"https://example.com\\">https://example.com</a>, and <a href=\\"mailto:contact@example.com\\">contact@example.com</a>.</p>
 <h2 id=\\"footnote\\"><a aria-hidden=true tabindex=-1 href=\\"#footnote\\"><span class=\\"icon icon-link\\"></span></a>Footnote</h2>
-<p>A note<sup><a href=\\"#user-content-fn-1\\" id=\\"user-content-fnref-1\\" data-footnote-ref=\\"undefined\\" aria-describedby=\\"footnote-label\\">1</a></sup></p>
+<p>A note<sup><a href=\\"#user-content-fn-1\\" id=\\"user-content-fnref-1\\" data-footnote-ref=\\"\\" aria-describedby=\\"footnote-label\\">1</a></sup></p>
 <h2 id=\\"strikethrough\\"><a aria-hidden=true tabindex=-1 href=\\"#strikethrough\\"><span class=\\"icon icon-link\\"></span></a>Strikethrough</h2>
 <p><del>one</del> or <del>two</del> tildes.</p>
 <h2 id=\\"table\\"><a aria-hidden=true tabindex=-1 href=\\"#table\\"><span class=\\"icon icon-link\\"></span></a>Table</h2>
-<table>
-<thead>
-<tr>
-<th>a</th>
-<th align=\\"left\\">b</th>
-<th align=\\"right\\">c</th>
-<th align=\\"center\\">d</th>
-</tr>
-</thead>
-</table>
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>a</th><th align=\\"left\\">b</th><th align=\\"right\\">c</th><th align=\\"center\\">d</th></tr></thead></table>
 <h2 id=\\"tasklist\\"><a aria-hidden=true tabindex=-1 href=\\"#tasklist\\"><span class=\\"icon icon-link\\"></span></a>Tasklist</h2>
 <ul class=\\"contains-task-list\\">
-<li class=\\"task-list-item\\"><input type=\\"checkbox\\" checked=\\"undefined\\" disabled=\\"undefined\\"/> to do</li>
+<li class=\\"task-list-item\\"><input type=\\"checkbox\\" disabled=\\"undefined\\"/> to do</li>
 <li class=\\"task-list-item\\"><input type=\\"checkbox\\" checked=\\"undefined\\" disabled=\\"undefined\\"/> done</li>
 </ul>
-<section data-footnotes=\\"undefined\\" class=\\"footnotes\\"><h2 class=\\"sr-only\\" id=\\"footnote-label\\"><a aria-hidden=true tabindex=-1 href=\\"#footnote-label\\"><span class=\\"icon icon-link\\"></span></a>Footnotes</h2>
+<section data-footnotes=\\"\\" class=\\"footnotes\\"><h2 class=\\"sr-only\\" id=\\"footnote-label\\"><a aria-hidden=true tabindex=-1 href=\\"#footnote-label\\"><span class=\\"icon icon-link\\"></span></a>Footnotes</h2>
 <ol>
 <li id=\\"user-content-fn-1\\">
 <p>Big note. <a href=\\"#user-content-fnref-1\\" data-footnote-backref=\\"\\" aria-label=\\"Back to reference 1\\" class=\\"data-footnote-backref\\">↩</a></p>
@@ -98,7 +98,7 @@ Hello world</p>
     </option></select>"`
 
 exports[`Markdown > parse codeblocks for line highlights, title, and diff markers 1`] = `"<h2 id=\\"codeblocks\\"><a aria-hidden=true tabindex=-1 href=\\"#codeblocks\\"><span class=\\"icon icon-link\\"></span></a>Codeblocks</h2>
-<pre class=\\"shiki material-theme-palenight has-diff has-highlighted\\" style=\\"background-color:#292D3E;color:#babed8\\" tabindex=0 title=\\"start/routes.ts\\"><code><span class=\\"line\\"><span style=\\"color:#89DDFF;font-style:italic\\">import</span><span style=\\"color:#BABED8\\"> router </span><span style=\\"color:#89DDFF;font-style:italic\\">from</span><span style=\\"color:#89DDFF\\"> &#x27;</span><span style=\\"color:#C3E88D\\">@adonisjs/core/services/router</span><span style=\\"color:#89DDFF\\">&#x27;</span></span>
+<pre class=\\"shiki material-theme-palenight has-diff has-highlighted\\" style=\\"background-color:#292D3E;color:#babed8\\" tabindex=0><code><span class=\\"line\\"><span style=\\"color:#89DDFF;font-style:italic\\">import</span><span style=\\"color:#BABED8\\"> router </span><span style=\\"color:#89DDFF;font-style:italic\\">from</span><span style=\\"color:#89DDFF\\"> &#x27;</span><span style=\\"color:#C3E88D\\">@adonisjs/core/services/router</span><span style=\\"color:#89DDFF\\">&#x27;</span></span>
 <span class=\\"line\\"><span style=\\"color:#89DDFF;font-style:italic\\">import</span><span style=\\"color:#89DDFF\\"> {</span><span style=\\"color:#BABED8\\"> middleware</span><span style=\\"color:#89DDFF\\"> }</span><span style=\\"color:#89DDFF;font-style:italic\\"> from</span><span style=\\"color:#89DDFF\\"> &#x27;</span><span style=\\"color:#C3E88D\\">#start/kernel</span><span style=\\"color:#89DDFF\\">&#x27;</span></span>
 <span class=\\"line diff add\\"><span style=\\"color:#C792EA\\">const</span><span style=\\"color:#BABED8\\"> SessionController </span><span style=\\"color:#89DDFF\\">=</span><span style=\\"color:#89DDFF\\"> ()</span><span style=\\"color:#C792EA\\"> =&gt;</span><span style=\\"color:#89DDFF\\"> import</span><span style=\\"color:#BABED8\\">(</span><span style=\\"color:#89DDFF\\">&#x27;</span><span style=\\"color:#C3E88D\\">#controllers/session_controller</span><span style=\\"color:#89DDFF\\">&#x27;</span><span style=\\"color:#BABED8\\">) </span></span>
 <span class=\\"line\\"></span>
