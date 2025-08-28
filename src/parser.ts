@@ -159,11 +159,7 @@ export class MarkdownParser {
     /**
      * Converting the AST to HAST and applying its plugins
      */
-    stream
-      .use(remarkRehype, { allowDangerousHtml: options.allowHTML })
-      .use(rehypeRaw)
-      .use(rehypeSlug)
-      .use(rehypeAutolinkHeadings)
+    stream.use(remarkRehype, { allowDangerousHtml: options.allowHTML })
 
     /**
      * Optionally highlighting source code
@@ -182,6 +178,8 @@ export class MarkdownParser {
             }
       )
     }
+
+    stream.use(rehypeRaw).use(rehypeSlug).use(rehypeAutolinkHeadings)
 
     /**
      * Applying rehype plugins
