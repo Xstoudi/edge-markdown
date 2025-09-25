@@ -18,6 +18,15 @@ import { type RendererOptions } from './types.ts'
 
 /**
  * Find if element is a void HTML element or not
+ *
+ * @param element - HTML tag name to check
+ * @returns True if the element is a void element (self-closing)
+ *
+ * @example
+ * ```typescript
+ * isVoidElement('img') // true
+ * isVoidElement('div') // false
+ * ```
  */
 export function isVoidElement(element: VoidHtmlTags): element is VoidHtmlTags {
   return voidHtmlTags.includes(element)
@@ -25,6 +34,15 @@ export function isVoidElement(element: VoidHtmlTags): element is VoidHtmlTags {
 
 /**
  * Stringify an object to props to HTML attributes
+ *
+ * @param props - Object containing HTML properties to convert to attribute string
+ * @returns HTML attribute string with proper escaping and formatting
+ *
+ * @example
+ * ```typescript
+ * stringifyAttributes({ id: 'main', class: ['btn', 'primary'] })
+ * // ' id="main" class="btn primary"'
+ * ```
  */
 export function stringifyAttributes(props: any): string {
   const attributes = Object.keys(props)
@@ -67,6 +85,16 @@ export function stringifyAttributes(props: any): string {
 /**
  * Returns a collection of markdown components for a given edge
  * instance. Only considers components from the default disk
+ *
+ * @param edge - Edge.js instance to discover components from
+ * @param prefix - Component prefix to filter by (e.g., 'markdown')
+ * @returns Object mapping tag names to component paths
+ *
+ * @example
+ * ```typescript
+ * const components = discoverMarkdownComponents(edge, 'markdown')
+ * // { 'custom-heading': 'components/markdown/custom-heading' }
+ * ```
  */
 export function discoverMarkdownComponents(edge: Edge, prefix: string) {
   const componentsBasePath = `components/${prefix}/`
@@ -91,8 +119,17 @@ export function discoverMarkdownComponents(edge: Edge, prefix: string) {
 }
 
 /**
- * Returns a collection of markdown components for a given edge
- * instance. Only considers components from the default disk
+ * Process MDC (Markdown Component) props by resolving frontmatter references
+ *
+ * @param props - Component properties to process
+ * @param frontmatter - Frontmatter data to resolve references from
+ * @returns Processed props with frontmatter values resolved
+ *
+ * @example
+ * ```typescript
+ * processMdcProps({ ':title': 'pageTitle', content: 'static' }, { pageTitle: 'Hello' })
+ * // { title: 'Hello', content: 'static' }
+ * ```
  */
 export function processMdcProps(props: Record<string, any>, frontmatter: Record<string, any>) {
   return Object.keys(props).reduce<Record<string, any>>((result, key) => {
@@ -108,6 +145,15 @@ export function processMdcProps(props: Record<string, any>, frontmatter: Record<
 
 /**
  * Returns the children node for a given slot or the main slot
+ *
+ * @param node - HAST Element node to extract slots from
+ * @returns Object mapping slot names to their child elements
+ *
+ * @example
+ * ```typescript
+ * const slots = getNodeSlots(elementNode)
+ * // { main: [...], header: [...], footer: [...] }
+ * ```
  */
 export function getNodeSlots(node: Element) {
   return node.children.reduce<Record<string, ElementContent[]>>(
@@ -130,6 +176,17 @@ export function getNodeSlots(node: Element) {
 /**
  * Returns the rendering context to be shared by reference with
  * all markdown related components
+ *
+ * @param options - Renderer configuration options
+ * @param vFile - VFile instance containing the parsed content
+ * @param frontmatter - Parsed frontmatter data from the document
+ * @returns Rendering context with component resolution methods
+ *
+ * @example
+ * ```typescript
+ * const context = createRenderingContext(options, vFile, frontmatter)
+ * const [component, props] = context.getComponentFor(textNode)
+ * ```
  */
 export function createRenderingContext(
   options: RendererOptions,

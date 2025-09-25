@@ -7,8 +7,10 @@
  * file that was distributed with this source code.
  */
 
-import { Markdown } from './markdown.ts'
 import { type PluginFn } from 'edge.js/types'
+
+import { Cache } from './cache.ts'
+import { Markdown } from './markdown.ts'
 import { discoverMarkdownComponents } from './utils.ts'
 import { type RendererOptions, type ParserOptions } from './types.ts'
 
@@ -32,17 +34,11 @@ import { type RendererOptions, type ParserOptions } from './types.ts'
  */
 export const edgeMarkdown: PluginFn<
   Partial<RendererOptions & ParserOptions> & { prefix?: string }
-> = (edge, firstRun, options) => {
-  /**
-   * Return early when plugin is registered in recurring mode
-   */
-  if (!firstRun) {
-    return
-  }
-
+> = (edge, _, options) => {
+  const globalCache = new Cache()
   const components = discoverMarkdownComponents(edge, options.prefix ?? 'markdown')
   edge.onRender((edgeRenderer) => {
-    edgeRenderer.share({ $markdown: new Markdown(edgeRenderer, components, options) })
+    edgeRenderer.share({ $markdown: new Markdown(edgeRenderer, components, globalCache, options) })
   })
 
   /**

@@ -70,6 +70,12 @@ const SHIKI_DEFAULTS: RehypeShikiOptions = {
 /**
  * Exposes static interface for parsing markdown docs using
  * remark.
+ *
+ * @example
+ * ```typescript
+ * const vFile = new VFile({ value: '# Hello World' })
+ * const result = await MarkdownParser.parse(vFile, options)
+ * ```
  */
 export class MarkdownParser {
   /**
@@ -78,6 +84,11 @@ export class MarkdownParser {
    * @param options - TOC configuration options or boolean flag
    * @param resultCallback - Callback function to receive the generated TOC HAST node
    * @returns Plugin function that processes the markdown AST to extract TOC
+   *
+   * @example
+   * ```typescript
+   * stream.use(MarkdownParser.#parseToc, tocOptions, (toc) => console.log(toc))
+   * ```
    */
   static #parseToc: Plugin<[options: ParserOptions['toc'], (generatedToc: HastNode) => void]> = (
     options,
@@ -105,6 +116,11 @@ export class MarkdownParser {
    * Returns the AST as the result instead of compiled output
    *
    * @returns Plugin function that sets a custom compiler to pass through the AST
+   *
+   * @example
+   * ```typescript
+   * stream.use(MarkdownParser.#passThroughCompiler)
+   * ```
    */
   static #passThroughCompiler: Plugin = function () {
     this.compiler = function (tree) {
@@ -117,6 +133,11 @@ export class MarkdownParser {
    * the HAST syntax tree.
    *
    * @returns Plugin function that transfers node attributes to HAST data properties
+   *
+   * @example
+   * ```typescript
+   * stream.use(MarkdownParser.#shareMdcMetaDataWithHastTree)
+   * ```
    */
   static #shareMdcMetaDataWithHastTree: Plugin = function () {
     return function (tree) {
@@ -132,9 +153,21 @@ export class MarkdownParser {
   /**
    * Parses markdown to AST
    *
-   * @param contents - Raw markdown content string to parse
+   * @param vFile - VFile instance containing the markdown content to parse
    * @param options - Parser configuration options including plugins and features
    * @returns Promise resolving to parsed result with vFile, TOC, and frontmatter
+   *
+   * @example
+   * ```typescript
+   * const vFile = new VFile({ value: '# Hello\n\nWorld' })
+   * const result = await MarkdownParser.parse(vFile, {
+   *   highlight: true,
+   *   toc: true,
+   *   remarkPlugins: [],
+   *   rhypePlugins: [],
+   *   allowHTML: true
+   * })
+   * ```
    */
   static async parse(vFile: VFile, options: ParserOptions) {
     let toc: HastNode | null = null
