@@ -133,7 +133,7 @@ export class Markdown {
    * ```typescript
    * // Parse from file
    * const result = await markdown.parse({ file: './content.md' })
-   * 
+   *
    * // Parse from content string
    * const result = await markdown.parse({ content: '# Hello World' })
    * ```
@@ -168,7 +168,7 @@ export class Markdown {
    *   cacheKey: 'article-1',
    *   highlight: true
    * })
-   * 
+   *
    * // Render from content string
    * const result = await markdown.render({
    *   content: '# Hello\n\nWorld with **bold** text'
