@@ -152,3 +152,11 @@ exports[`Markdown > parse markdown with HTML 1`] = `"<table>
   </tbody>
 </table>"`
 
+exports[`Markdown > parse yaml frontmatter within components 1`] = `"<select>    <option value=\\"AdonisJS\\">
+      AdonisJS
+    </option>    <option value=\\"Lucid\\">
+      Lucid
+    </option>    <option value=\\"VineJS\\">
+      VineJS
+    </option></select>"`
+

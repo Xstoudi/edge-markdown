@@ -276,4 +276,17 @@ Here is a paragraph with a [link](./foo)\`
 
     assert.snapshot(result.content).match()
   })
+
+  test('parse yaml frontmatter within components', async ({ assert }) => {
+    const edge = new Edge()
+    edge.mount(join(import.meta.dirname, 'fixtures/views'))
+    edge.use(edgeMarkdown, {})
+
+    const renderer = edge.share({})
+    const result = await renderer.getState().$markdown.render({
+      file: join(import.meta.dirname, 'fixtures/front_matter_within_components.mdc'),
+    })
+
+    assert.snapshot(result.content).match()
+  })
 })

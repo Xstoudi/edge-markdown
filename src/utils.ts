@@ -135,7 +135,7 @@ export function processMdcProps(props: Record<string, any>, frontmatter: Record<
   return Object.keys(props).reduce<Record<string, any>>((result, key) => {
     const value = props[key]
     if (key.startsWith(':') && value) {
-      result[key.slice(1)] = frontmatter[value]
+      result[key.slice(1)] = value in frontmatter ? frontmatter[value] : JSON.parse(value)
     } else {
       result[key] = value
     }
