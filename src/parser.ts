@@ -95,20 +95,12 @@ export class MarkdownParser {
     resultCallback
   ) => {
     return (tree) => {
-      const toc = mdastToc(tree as any, typeof options === 'object' ? options : {}).map
+      const toc = mdastToc(tree as any, typeof options === 'object' ? options : { minDepth: 2 }).map
       if (!toc) {
         return
       }
 
-      const firstListItem = toc.children.find((node) => node.type === 'listItem')
-      if (!firstListItem) {
-        return
-      }
-
-      const nestedUl = firstListItem.children.find((node) => node.type === 'list')
-      if (nestedUl) {
-        resultCallback(toHast(nestedUl))
-      }
+      resultCallback(toHast(toc))
     }
   }
 

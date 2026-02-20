@@ -92,7 +92,7 @@ export class Markdown {
       rhypePlugins: [],
       highlight: true,
       hooks: [],
-      toc: { enabled: true, maxDepth: 2 },
+      toc: { enabled: true, maxDepth: 2, minDepth: 2 },
       ...options,
     }
     this.#components = { ...discoveredComponents, ...this.#options.components }
