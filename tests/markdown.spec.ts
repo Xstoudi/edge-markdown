@@ -289,4 +289,85 @@ Here is a paragraph with a [link](./foo)\`
 
     assert.snapshot(result.content).match()
   })
+
+  test('extract frontmatter from a file', async ({ assert }) => {
+    const edge = new Edge()
+    edge.mount(join(import.meta.dirname, 'fixtures/views'))
+    edge.use(edgeMarkdown, {})
+
+    const renderer = edge.share({})
+    const data = await renderer
+      .getState()
+      .$markdown.frontmatter({ file: join(import.meta.dirname, 'fixtures/front_matter.mdc') })
+
+    assert.deepEqual(data, {
+      title: 'Hello world',
+      items: ['AdonisJS', 'Lucid', 'VineJS'],
+    })
+  })
+
+  test('extract frontmatter from raw content', async ({ assert }) => {
+    const edge = new Edge()
+    edge.mount(join(import.meta.dirname, 'fixtures/views'))
+    edge.use(edgeMarkdown, {})
+
+    const renderer = edge.share({})
+    const data = await renderer.getState().$markdown.frontmatter({
+      content: dedent`
+        ---
+        title: Test doc
+        draft: true
+        ---
+
+        # Hello
+      `,
+    })
+
+    assert.deepEqual(data, { title: 'Test doc', draft: true })
+  })
+
+  test('render preview with content before first h2', async ({ assert }) => {
+    const edge = new Edge()
+    edge.mount(join(import.meta.dirname, 'fixtures/views'))
+    edge.use(edgeMarkdown, {})
+
+    const renderer = edge.share({})
+    const result = await renderer.getState().$markdown.preview({
+      content: dedent`
+        # Main title
+
+        Intro paragraph
+
+        ## First section
+
+        Section content
+      `,
+    })
+
+    assert.include(result.content, '<h1')
+    assert.include(result.content, 'Intro paragraph')
+    assert.notInclude(result.content, 'First section')
+    assert.notInclude(result.content, 'Section content')
+  })
+
+  test('preview returns full content when there is no h2', async ({ assert }) => {
+    const edge = new Edge()
+    edge.mount(join(import.meta.dirname, 'fixtures/views'))
+    edge.use(edgeMarkdown, {})
+
+    const renderer = edge.share({})
+    const result = await renderer.getState().$markdown.preview({
+      content: dedent`
+        # Main title
+
+        Some content here
+
+        More content
+      `,
+    })
+
+    assert.include(result.content, 'Main title')
+    assert.include(result.content, 'Some content here')
+    assert.include(result.content, 'More content')
+  })
 })

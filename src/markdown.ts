@@ -8,8 +8,10 @@
  */
 
 import { VFile } from 'vfile'
+import { type Root } from 'hast'
 import { type Edge } from 'edge.js'
 import { readFile } from 'node:fs/promises'
+import { parseFrontMatter } from 'remark-mdc'
 
 import { type Cache } from './cache.ts'
 import { MarkdownParser } from './parser.ts'
@@ -215,5 +217,66 @@ export class Markdown {
     }
 
     return result
+  }
+
+  /**
+   * Extract YAML frontmatter from a markdown file or content string
+   * without running the full parsing pipeline.
+   *
+   * @param options - Options specifying either file path or content string
+   * @returns Promise resolving to the parsed frontmatter object
+   *
+   * @example
+   * ```typescript
+   * const data = await markdown.frontmatter({ file: './content.md' })
+   * console.log(data.title) // frontmatter field
+   * ```
+   */
+  async frontmatter(options: { file: string } | { content: string }) {
+    let contents: string
+    if ('file' in options) {
+      contents = await readFile(options.file, 'utf-8')
+    } else {
+      contents = options.content
+    }
+    const { data } = parseFrontMatter(contents)
+    return data
+  }
+
+  /**
+   * Parse and render only the content before the first h2 heading.
+   * Returns the same shape as `render()` but with truncated content
+   * and no table of contents.
+   *
+   * @param options - Options specifying either file path or content string to render
+   * @returns Promise resolving to rendered preview HTML with frontmatter and messages
+   *
+   * @example
+   * ```typescript
+   * const result = await markdown.preview({ file: './content.md' })
+   * console.log(result.content) // HTML before first h2
+   * ```
+   */
+  async preview(options: MarkdownOptions) {
+    const { vFile, frontmatter } = await this.parse({ ...options, toc: false })
+    const root = vFile.result as Root
+
+    const firstH2Index = root.children.findIndex(
+      (node) => node.type === 'element' && node.tagName === 'h2'
+    )
+    if (firstH2Index !== -1) {
+      root.children = root.children.slice(0, firstH2Index)
+    }
+
+    const content = await this.#edgeRenderer.render('markdown_root', {
+      node: root,
+      $renderingContext: createRenderingContext(
+        this.#mergeRendererOptions(options),
+        vFile,
+        frontmatter
+      ),
+    })
+
+    return { content, frontmatter, messages: vFile.messages }
   }
 }
