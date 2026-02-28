@@ -246,7 +246,6 @@ export class Markdown {
   /**
    * Parse and render only the content before the first h2 heading.
    * Returns the same shape as `render()` but with truncated content
-   * and no table of contents.
    *
    * @param options - Options specifying either file path or content string to render
    * @returns Promise resolving to rendered preview HTML with frontmatter and messages
@@ -258,7 +257,12 @@ export class Markdown {
    * ```
    */
   async preview(options: MarkdownOptions) {
-    const { vFile, frontmatter } = await this.parse({ ...options, toc: false })
+    const cacheKey = `preview-${options.cacheKey}`
+    if (cacheKey && this.#cache.has(cacheKey)) {
+      return this.#cache.get(cacheKey)
+    }
+
+    const { vFile, toc, frontmatter } = await this.parse(options)
     const root = vFile.result as Root
 
     const firstH2Index = root.children.findIndex(
@@ -277,6 +281,26 @@ export class Markdown {
       ),
     })
 
-    return { content, frontmatter, messages: vFile.messages }
+    const result = {
+      toc: toc
+        ? await this.#edgeRenderer.render('markdown_toc', {
+            node: toc,
+            $renderingContext: createRenderingContext(
+              this.#mergeRendererOptions(options),
+              vFile,
+              frontmatter
+            ),
+          })
+        : '',
+      content,
+      frontmatter,
+      messages: vFile.messages,
+    }
+
+    if (cacheKey) {
+      this.#cache.set(cacheKey, result)
+    }
+
+    return result
   }
 }
