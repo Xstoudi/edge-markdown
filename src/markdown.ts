@@ -257,7 +257,7 @@ export class Markdown {
    * ```
    */
   async preview(options: MarkdownOptions) {
-    const cacheKey = `preview-${options.cacheKey}`
+    const cacheKey = options.cacheKey ? `preview-${options.cacheKey}` : undefined
     if (cacheKey && this.#cache.has(cacheKey)) {
       return this.#cache.get(cacheKey)
     }
