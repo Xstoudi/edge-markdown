@@ -283,6 +283,5 @@ export type ParserOptions = {
  * ```
  */
 export type MarkdownOptions = Partial<RendererOptions & ParserOptions> & { cacheKey?: string } & (
-    | { file: string }
-    | { content: string }
+    { file: string } | { content: string }
   )
