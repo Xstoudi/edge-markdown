@@ -161,7 +161,7 @@ export type ParserOptions = {
    * @example
    * ```typescript
    * {
-   *   rhypePlugins: [
+   *   rehypePlugins: [
    *     rehypeSlug,                    // Add IDs to headings
    *     rehypeAutolinkHeadings,        // Add anchor links to headings
    *     [rehypeExternalLinks, {        // Process external links
@@ -172,7 +172,7 @@ export type ParserOptions = {
    * }
    * ```
    */
-  rhypePlugins: Plugin[]
+  rehypePlugins: Plugin[]
 
   /**
    * Whether to allow raw HTML in Markdown content.

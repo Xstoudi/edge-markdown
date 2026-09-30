@@ -156,7 +156,7 @@ export class MarkdownParser {
    *   highlight: true,
    *   toc: true,
    *   remarkPlugins: [],
-   *   rhypePlugins: [],
+   *   rehypePlugins: [],
    *   allowHTML: true
    * })
    * ```
@@ -213,7 +213,7 @@ export class MarkdownParser {
     /**
      * Applying rehype plugins
      */
-    options.rhypePlugins.forEach((plugin) => stream.use(plugin))
+    options.rehypePlugins.forEach((plugin) => stream.use(plugin))
     await stream.use(this.#passThroughCompiler).process(vFile)
 
     return {
