@@ -9,7 +9,7 @@
 
 import { type VFile } from 'vfile'
 import { type Element } from 'hast'
-import { type Plugin } from 'unified'
+import { type PluggableList } from 'unified'
 import { type RehypeShikiOptions } from '@shikijs/rehype'
 import { type Options as TocOptions } from 'mdast-util-toc'
 
@@ -149,7 +149,7 @@ export type ParserOptions = {
    * }
    * ```
    */
-  remarkPlugins: Plugin[]
+  remarkPlugins: PluggableList
 
   /**
    * Array of Rehype plugins to apply during HTML AST processing.
@@ -172,7 +172,7 @@ export type ParserOptions = {
    * }
    * ```
    */
-  rehypePlugins: Plugin[]
+  rehypePlugins: PluggableList
 
   /**
    * Whether to allow raw HTML in Markdown content.
